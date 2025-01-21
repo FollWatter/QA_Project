@@ -29,11 +29,8 @@ public class HomePageTests extends BaseTest {
     public void testCategoryMenuFunctionality() {
         homePage.open();
         homePage.selectCategoryFromMenu("Ноутбуки");
-
-        // Очікування завантаження сторінки категорії
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         WebElement categoryPageHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Ноутбуки')]")));
-
         Assert.assertTrue(homePage.isCategoryPageDisplayed("Ноутбуки"), "Category page for 'Ноутбуки' is not displayed");
     }
 
@@ -43,23 +40,18 @@ public class HomePageTests extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.open();
         homePage.changeLanguage("Eng");
-
-        // Очікування зміни мови
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Eng')]")));
-
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/en/"), "Language did not change to 'Eng'");
     }
+
     @Test
     public void testSelectArticleFromList() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
-
         homePage.selectFirstArticle();
-
-        // Очікування завантаження сторінки статті
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement articleContent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".article-title")));
 
@@ -72,21 +64,16 @@ public class HomePageTests extends BaseTest {
 
         homePage.registerAccount("testmail@gmail.com", "123456ab");
     }
+
     @Test
     public void testSelectCategoryFromCatalog() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
-
-        // Вибір категорії "Зв'язок і гаджети"
         homePage.selectCategory("Зв'язок і гаджети");
-
-        // Вибір підкатегорії "Смартфони"
         homePage.selectSubCategory("Мобільні телефони");
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement subCategoryPageHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Мобільні телефони')]")));
-
         Assert.assertTrue(homePage.isSubCategoryPageDisplayed("Мобільні телефони"), "Sub-category page for 'Мобільні телефони' is not displayed");
     }
 
