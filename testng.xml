@@ -1,0 +1,7 @@
+<suite name="E-Katalog Test Suite">
+    <test name="Home Page Tests">
+        <classes>
+            <class name="tests.pages.HomePageTests"/>
+        </classes>
+    </test>
+</suite>
