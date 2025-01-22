@@ -2,6 +2,7 @@
     <test name="Home Page Tests">
         <classes>
             <class name="tests.pages.HomePageTests"/>
+            <class name="tests.pages.ProductPageTests"/>
         </classes>
     </test>
 </suite>

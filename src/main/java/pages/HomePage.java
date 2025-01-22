@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class HomePage {
@@ -38,12 +37,6 @@ public class HomePage {
         WebElement firstArticle = driver.findElement(By.cssSelector(".articles .article-link"));
         firstArticle.click();
     }
-
-    public boolean isArticlePageDisplayed() {
-        WebElement articleContent = driver.findElement(By.cssSelector(".article-title"));
-        return articleContent.isDisplayed();
-    }
-
     public void registerAccount(String email, String password) {
         WebElement loginButton = driver.findElement(By.className("header_action_login"));
         loginButton.click();
