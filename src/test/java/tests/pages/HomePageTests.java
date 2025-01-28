@@ -1,6 +1,7 @@
 package tests.pages;
 
 import framework.BaseTest;
+import framework.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
-
 import java.time.Duration;
+import io.qameta.allure.Description;
 
 import static framework.DriverManager.getDriver;
 
@@ -26,6 +27,7 @@ public class HomePageTests extends BaseTest {
     }
 
     @Test
+    @Description("Перевірка функціональності меню категорій")
     public void testCategoryMenuFunctionality() {
         homePage.open();
         homePage.selectCategoryFromMenu("Ноутбуки");
@@ -35,8 +37,9 @@ public class HomePageTests extends BaseTest {
     }
 
     @Test
+    @Description("Перевірка зміни мови")
     public void testChangeLanguage() {
-        WebDriver driver = getDriver();
+        WebDriver driver = DriverManager.getDriver();
         HomePage homePage = new HomePage(driver);
         homePage.open();
         homePage.changeLanguage("Eng");
@@ -47,25 +50,20 @@ public class HomePageTests extends BaseTest {
     }
 
     @Test
-    public void testSelectArticleFromList() {
-        WebDriver driver = getDriver();
-        HomePage homePage = new HomePage(driver);
-        homePage.open();
-        homePage.selectFirstArticle();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement articleContent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".article-title")));
-
-        Assert.assertTrue(articleContent.isDisplayed(), "Article page is not displayed");
+    @Description("Перевірка перемикання режиму день/ніч")
+    public void testToggleDayNightMode() {
+        homePage.toggleDayNightMode();
     }
 
     @Test
+    @Description("Перевірка реєстрації облікового запису")
     public void testAccountRegistration() {
         homePage.open();
-
         homePage.registerAccount("testmail@gmail.com", "123456ab");
     }
 
     @Test
+    @Description("Перевірка вибору категорії та підкатегорії")
     public void testSelectCategoryFromCatalog() {
         WebDriver driver = getDriver();
         HomePage homePage = new HomePage(driver);
@@ -76,5 +74,4 @@ public class HomePageTests extends BaseTest {
         WebElement subCategoryPageHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Мобільні телефони')]")));
         Assert.assertTrue(homePage.isSubCategoryPageDisplayed("Мобільні телефони"), "Sub-category page for 'Мобільні телефони' is not displayed");
     }
-
 }

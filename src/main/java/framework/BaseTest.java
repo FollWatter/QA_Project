@@ -11,10 +11,12 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         driver = DriverManager.getDriver();
+        System.setProperty("allure.results.directory", "target/allure-results");
     }
 
     @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();
     }
+
 }

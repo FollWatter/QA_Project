@@ -1,8 +1,12 @@
 <suite name="E-Katalog Test Suite">
     <test name="Home Page Tests">
+        <listeners>
+            <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        </listeners>
         <classes>
             <class name="tests.pages.HomePageTests"/>
             <class name="tests.pages.ProductPageTests"/>
+            <class name="tests.pages.PostsPageTests"/>
         </classes>
     </test>
 </suite>
