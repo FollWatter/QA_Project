@@ -14,21 +14,20 @@ import java.util.List;
 
 public class ProductPageTests extends BaseTest {
     private ProductPage productPage;
-    private WebDriverWait wait; // Додано оголошення змінної wait
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void setUpPage() {
         driver.get("https://ek.ua/ua/list/122/");
         productPage = new ProductPage(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Ініціалізація wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     @Test
     @Description("Перевірка переходу до сторінки цін та першого магазину")
     public void testGoToFirstStore() {
         productPage.goToStore();
-        wait.until(ExpectedConditions.urlContains("prices")); // Використання wait
+        wait.until(ExpectedConditions.urlContains("prices"));
         String originalWindow = driver.getWindowHandle();
-
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(originalWindow)) {
                 driver.switchTo().window(windowHandle);

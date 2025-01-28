@@ -15,7 +15,6 @@ public class HomePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
     @Step("Відкрити головну сторінку")
     public void open() {
         driver.get("https://ek.ua/");
