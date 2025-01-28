@@ -40,8 +40,11 @@ public class HomePageTests extends BaseTest {
         homePage.open();
         homePage.changeLanguage("Eng");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("/en/"));
         WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Eng')]")));
+        Assert.assertTrue(header.isDisplayed(), "Language change link not displayed");
         String currentUrl = driver.getCurrentUrl();
+        System.out.println("Current URL: " + currentUrl);
         Assert.assertTrue(currentUrl.contains("/en/"), "Language did not change to 'Eng'");
     }
     @Test
