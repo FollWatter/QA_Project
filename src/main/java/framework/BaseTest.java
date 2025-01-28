@@ -13,7 +13,6 @@ public class BaseTest {
         driver = DriverManager.getDriver();
         System.setProperty("allure.results.directory", "target/allure-results");
     }
-
     @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();

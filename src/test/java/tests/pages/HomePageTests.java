@@ -1,5 +1,4 @@
 package tests.pages;
-
 import framework.BaseTest;
 import framework.DriverManager;
 import org.openqa.selenium.By;
@@ -13,7 +12,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import java.time.Duration;
 import io.qameta.allure.Description;
-
 import static framework.DriverManager.getDriver;
 
 public class HomePageTests extends BaseTest {
@@ -25,7 +23,6 @@ public class HomePageTests extends BaseTest {
         WebDriver driver = getDriver();
         homePage = new HomePage(driver);
     }
-
     @Test
     @Description("Перевірка функціональності меню категорій")
     public void testCategoryMenuFunctionality() {
@@ -35,7 +32,6 @@ public class HomePageTests extends BaseTest {
         WebElement categoryPageHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Ноутбуки')]")));
         Assert.assertTrue(homePage.isCategoryPageDisplayed("Ноутбуки"), "Category page for 'Ноутбуки' is not displayed");
     }
-
     @Test
     @Description("Перевірка зміни мови")
     public void testChangeLanguage() {
@@ -48,20 +44,17 @@ public class HomePageTests extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/en/"), "Language did not change to 'Eng'");
     }
-
     @Test
     @Description("Перевірка перемикання режиму день/ніч")
     public void testToggleDayNightMode() {
         homePage.toggleDayNightMode();
     }
-
     @Test
     @Description("Перевірка реєстрації облікового запису")
     public void testAccountRegistration() {
         homePage.open();
         homePage.registerAccount("testmail@gmail.com", "123456ab");
     }
-
     @Test
     @Description("Перевірка вибору категорії та підкатегорії")
     public void testSelectCategoryFromCatalog() {

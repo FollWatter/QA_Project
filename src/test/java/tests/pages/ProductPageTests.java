@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ProductPage;
 import io.qameta.allure.Description;
-
 import java.time.Duration;
 import java.util.List;
 
